@@ -6,13 +6,15 @@
   
   <title>三和弦、七和弦与终止式 | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta property="og:type" content="article">
+  <meta name="description" content="三和弦一二三。                               (function () {           var config &#x3D; {&quot;js&quot;:&quot;&#x2F;js&#x2F;abcjs_midi_5.9.1-min.js&quot;,&quot;css&quot;:&quot;&#x2F;css&#x2F;abcjs-midi.css&quot;,&quot;scriptId&quot;:&quot;hexo-tag-abcjs&quot;,&quot;midi&quot;:true,&quot;animation&quot;:true,&quot;an">
+<meta property="og:type" content="article">
 <meta property="og:title" content="三和弦、七和弦与终止式">
 <meta property="og:url" content="http://example.com/2024/12/01/%E4%B8%89%E5%92%8C%E5%BC%A6%E3%80%81%E4%B8%83%E5%92%8C%E5%BC%A6%E4%B8%8E%E7%BB%88%E6%AD%A2%E5%BC%8F/index.html">
 <meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="三和弦一二三。                               (function () {           var config &#x3D; {&quot;js&quot;:&quot;&#x2F;js&#x2F;abcjs_midi_5.9.1-min.js&quot;,&quot;css&quot;:&quot;&#x2F;css&#x2F;abcjs-midi.css&quot;,&quot;scriptId&quot;:&quot;hexo-tag-abcjs&quot;,&quot;midi&quot;:true,&quot;animation&quot;:true,&quot;an">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2024-12-01T10:54:24.000Z">
-<meta property="article:modified_time" content="2024-12-01T10:54:24.850Z">
+<meta property="article:modified_time" content="2024-12-02T08:32:57.288Z">
 <meta property="article:author" content="John Doe">
 <meta name="twitter:card" content="summary">
   
@@ -91,11 +93,81 @@
     
     <div class="e-content article-entry" itemprop="articleBody">
       
-        
+        <h2 id="三和弦"><a href="#三和弦" class="headerlink" title="三和弦"></a>三和弦</h2><p>一二三。</p>
+
+      <div id="abcjs-audio-3" class="abcjs-audio-container"></div>
+      <div id="abcjs-paper-2" class="abcjs-paper-container"></div>
+      <script>
+        (function () {
+          var config = {"js":"/js/abcjs_midi_5.9.1-min.js","css":"/css/abcjs-midi.css","scriptId":"hexo-tag-abcjs","midi":true,"animation":true,"animationColors":["#000000","#3d9afc"],"options":{"startingTune":0,"print":false,"visualTranspose":0,"scale":1,"responsive":"resize","inlineControls":{"loopToggle":true,"standard":true,"tooltipLoop":"Click to toggle play once/repeat.","tooltipReset":"Click to go to beginning.","tooltipPlay":"Click to play/pause.","tooltipProgress":"Click to change the playback position.","startPlaying":true}},"paperId":"abcjs-paper-2","audioId":"abcjs-audio-3"};
+          var abcString = "X: 22\nT:Money Lost\nM:3/4\nL:1/8\nQ:1/4=100\nC:Paul Rosen\nS:Copyright 2007, Paul Rosen\nR:Klezmer\nK:Dm\nAde|:\"Dm\"(f2d)e gf|\"A7\"e2^c4|\"Gm\"B>>^c BA BG|\"A\"A3Ade|\"Dm\"(f2d)e gf|\"A7\"e2^c4|\n\"Gm\"A>>B \"A7\"AG FE|1\"Dm\"D3Ade:|2\"Dm\"D3DEF||:\"Gm\"(G2D)E FG|\"Dm\"A2F4|\"Gm\"B>>c \"A7\"BA BG|\n\"Dm\"A3 DEF|\"Gm\"(G2D)EFG|\"Dm\"A2F4|\"E°\"E>>Fy \"(A7)\"ED^C2|1\"Dm\"D3DEF:|2\"Dm\"D6||";
+
+          function loadjs(id, url, cb) {
+            var js = document.createElement('script');
+
+            js.src = url;
+            if (id) {
+              js.id = id;
+            }
+            js.addEventListener('load', cb);
+            document.body.appendChild(js);
+            return js;
+          }
+          function loadcss(url) {
+            var css = document.createElement('link');
+
+            css.href = url;
+            css.rel = 'stylesheet';
+            css.type = 'text/css';
+            document.head.appendChild(css);
+          }
+          function colorRange(range, color) {
+            if (range && range.elements) {
+              range.elements.forEach(function (set) {
+                set.forEach(function (item) {
+                  item.setAttribute('fill', color);
+                });
+              });
+            }
+          }
+
+          function setup() {
+            var tunes = ABCJS.renderAbc(config.paperId, abcString, config.options || {});
+            var options = config.options || {};
+            var animationColors = config.animationColors;
+
+            if (config.animation) {
+              options.animate = Object.assign({
+                target: tunes[0],
+                qpm: 120,
+                listener: function (lastRange, currentRange, context) {
+                  colorRange(lastRange, animationColors[0]);
+                  colorRange(currentRange, animationColors[1]);
+                }
+              }, options.animate || {});
+            }
+            console.log(options);
+            if (config.midi) {
+              ABCJS.renderMidi(config.audioId, abcString, options);
+            }
+          }
+
+          if (typeof window.abcjs === 'undefined' && !document.getElementById(config.scriptId)) {
+            loadcss(config.css);
+            loadjs(config.scriptId, config.js, setup);
+          } else {
+            window.addEventListener('load', setup);
+          }
+        })();
+      </script>
+    
+
+<p>四五六</p>
+
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2024/12/01/%E4%B8%89%E5%92%8C%E5%BC%A6%E3%80%81%E4%B8%83%E5%92%8C%E5%BC%A6%E4%B8%8E%E7%BB%88%E6%AD%A2%E5%BC%8F/" data-id="cm45hiw7e0001awtgb2u3aweq" data-title="三和弦、七和弦与终止式" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://example.com/2024/12/01/%E4%B8%89%E5%92%8C%E5%BC%A6%E3%80%81%E4%B8%83%E5%92%8C%E5%BC%A6%E4%B8%8E%E7%BB%88%E6%AD%A2%E5%BC%8F/" data-id="cm46rurzf0001sstgdra95qnb" data-title="三和弦、七和弦与终止式" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
