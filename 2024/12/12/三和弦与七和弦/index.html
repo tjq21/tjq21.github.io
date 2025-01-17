@@ -136,660 +136,12 @@
 <h2 id="三和弦"><a href="#三和弦" class="headerlink" title="三和弦"></a>三和弦</h2><p>三个音三度堆叠形成三和弦（triads），自底向上分别为根音（root）、三音（third）和五音（fifth）。</p>
 <p>常见三和弦有：大三和弦（major triad）、小三和弦（minor triad）、增三和弦（augmented triad）、减三和弦（diminished triad）。</p>
 
-      <div id="abcjs-paper-34" class="abcjs-paper-container"></div>
-      <div id="abcjs-audio-35" class="abcjs-audio-container"></div>
-      <script>
-        (function () {
-          var config = {"js":"/js/abcjs-basic-min.js","css":"/css/abcjs-audio.css","scriptId":"hexo-tag-abcjs","midi":true,"animation":true,"animationColors":["#000000","#3d9afc"],"options":{"startingTune":0,"print":false,"visualTranspose":0,"scale":1,"responsive":"resize","inlineControls":{"loopToggle":true,"standard":true,"tooltipLoop":"Click to toggle play once/repeat.","tooltipReset":"Click to go to beginning.","tooltipPlay":"Click to play/pause.","tooltipProgress":"Click to change the playback position.","startPlaying":false}},"paperId":"abcjs-paper-34","audioId":"abcjs-audio-35"};
-          var abcString = "X:1\nK:C\nL:1\n\"@Major\" [GBd] \"@Minor\" [G_Bd] \"@Aug\" [G^B^d] \"@Dim\" [G_B_d] ||";
-
-          function loadjs(id, url, cb) {
-            var js = document.createElement('script');
-
-            js.src = url;
-            if (id) {
-              js.id = id;
-            }
-            js.addEventListener('load', cb);
-            document.body.appendChild(js);
-            return js;
-          }
-          function loadcss(url) {
-            var css = document.createElement('link');
-
-            css.href = url;
-            css.rel = 'stylesheet';
-            css.type = 'text/css';
-            document.head.appendChild(css);
-          }
-          function colorRange(range, color) {
-            if (range && range.elements) {
-              range.elements.forEach(function (set) {
-                set.forEach(function (item) {
-                  item.setAttribute('fill', color);
-                });
-              });
-            }
-          }
-
-          function setup() {
-            var tunes = ABCJS.renderAbc(config.paperId, abcString, config.options || {});
-            var options = config.options || {};
-            var animationColors = config.animationColors;
-
-            if (config.animation) {
-              options.animate = Object.assign({
-                target: tunes[0],
-                qpm: 120,
-                listener: function (lastRange, currentRange, context) {
-                  colorRange(lastRange, animationColors[0]);
-                  colorRange(currentRange, animationColors[1]);
-                }
-              }, options.animate || {});
-            }
-            console.log(options);
-            if (config.midi) {
-              var synth = new ABCJS.synth.CreateSynth();
-              var myContext = new AudioContext();
-              synth.init({
-                audioContext: myContext,
-                visualObj: tunes[0],
-                millisecondsPerMeasure: tunes[0].millisecondsPerMeasure(),
-                options: {
-                  soundFontUrl: "https://paulrosen.github.io/midi-js-soundfonts/abcjs/",
-                  pan: [ -0.3, 0.3 ]
-                }
-              }).then(() => {
-                // Ready to play. The results are details about what was loaded.
-                var playButton = document.createElement("button");
-                playButton.textContent = "Play";
-                document.querySelector("#abcjs-audio-35").appendChild(playButton);
-                playButton.addEventListener("click", function () {
-                  synth.prime().then(() => {
-                    synth.start();
-                  });
-                });
-              }).catch(function (reason) {
-                  console.log(reason)
-              });
-            }
-          }
-
-          if (typeof window.abcjs === 'undefined' && !document.getElementById(config.scriptId)) {
-            loadcss(config.css);
-            loadjs(config.scriptId, config.js, setup);
-          } else {
-            window.addEventListener('load', setup);
-          }
-        })();
-      </script>
-    
-
-<p>在大调中，一、四、五级三和弦是大和弦，二、三、六级三和弦是小和弦，七级三和弦是减和弦。</p>
-
-      <div id="abcjs-paper-36" class="abcjs-paper-container"></div>
-      <div id="abcjs-audio-37" class="abcjs-audio-container"></div>
-      <script>
-        (function () {
-          var config = {"js":"/js/abcjs-basic-min.js","css":"/css/abcjs-audio.css","scriptId":"hexo-tag-abcjs","midi":true,"animation":true,"animationColors":["#000000","#3d9afc"],"options":{"startingTune":0,"print":false,"visualTranspose":0,"scale":1,"responsive":"resize","inlineControls":{"loopToggle":true,"standard":true,"tooltipLoop":"Click to toggle play once/repeat.","tooltipReset":"Click to go to beginning.","tooltipPlay":"Click to play/pause.","tooltipProgress":"Click to change the playback position.","startPlaying":false}},"paperId":"abcjs-paper-36","audioId":"abcjs-audio-37"};
-          var abcString = "X:2\nK:Bb\nK:clef=bass\nL:1\n\"_I\" [_B,,D,F,] \"@Major\" \"_IV\" [_E,G,_B,] \"_V\" [F,A,C] || \"_ii\" [C,_E,G,] \"@Minor\" \"_iii\" [D,F,A,] \"_vi\" [G,_B,D] || \"@Diminished\" \"_vii°\" [A,,C,_E,] ||";
-
-          function loadjs(id, url, cb) {
-            var js = document.createElement('script');
-
-            js.src = url;
-            if (id) {
-              js.id = id;
-            }
-            js.addEventListener('load', cb);
-            document.body.appendChild(js);
-            return js;
-          }
-          function loadcss(url) {
-            var css = document.createElement('link');
-
-            css.href = url;
-            css.rel = 'stylesheet';
-            css.type = 'text/css';
-            document.head.appendChild(css);
-          }
-          function colorRange(range, color) {
-            if (range && range.elements) {
-              range.elements.forEach(function (set) {
-                set.forEach(function (item) {
-                  item.setAttribute('fill', color);
-                });
-              });
-            }
-          }
-
-          function setup() {
-            var tunes = ABCJS.renderAbc(config.paperId, abcString, config.options || {});
-            var options = config.options || {};
-            var animationColors = config.animationColors;
-
-            if (config.animation) {
-              options.animate = Object.assign({
-                target: tunes[0],
-                qpm: 120,
-                listener: function (lastRange, currentRange, context) {
-                  colorRange(lastRange, animationColors[0]);
-                  colorRange(currentRange, animationColors[1]);
-                }
-              }, options.animate || {});
-            }
-            console.log(options);
-            if (config.midi) {
-              var synth = new ABCJS.synth.CreateSynth();
-              var myContext = new AudioContext();
-              synth.init({
-                audioContext: myContext,
-                visualObj: tunes[0],
-                millisecondsPerMeasure: tunes[0].millisecondsPerMeasure(),
-                options: {
-                  soundFontUrl: "https://paulrosen.github.io/midi-js-soundfonts/abcjs/",
-                  pan: [ -0.3, 0.3 ]
-                }
-              }).then(() => {
-                // Ready to play. The results are details about what was loaded.
-                var playButton = document.createElement("button");
-                playButton.textContent = "Play";
-                document.querySelector("#abcjs-audio-37").appendChild(playButton);
-                playButton.addEventListener("click", function () {
-                  synth.prime().then(() => {
-                    synth.start();
-                  });
-                });
-              }).catch(function (reason) {
-                  console.log(reason)
-              });
-            }
-          }
-
-          if (typeof window.abcjs === 'undefined' && !document.getElementById(config.scriptId)) {
-            loadcss(config.css);
-            loadjs(config.scriptId, config.js, setup);
-          } else {
-            window.addEventListener('load', setup);
-          }
-        })();
-      </script>
-    
-
-<p>在和声小调中，一、四级是小和弦，五、六级是大和弦，二、七级是减和弦，三级是增和弦。</p>
-
-      <div id="abcjs-paper-38" class="abcjs-paper-container"></div>
-      <div id="abcjs-audio-39" class="abcjs-audio-container"></div>
-      <script>
-        (function () {
-          var config = {"js":"/js/abcjs-basic-min.js","css":"/css/abcjs-audio.css","scriptId":"hexo-tag-abcjs","midi":true,"animation":true,"animationColors":["#000000","#3d9afc"],"options":{"startingTune":0,"print":false,"visualTranspose":0,"scale":1,"responsive":"resize","inlineControls":{"loopToggle":true,"standard":true,"tooltipLoop":"Click to toggle play once/repeat.","tooltipReset":"Click to go to beginning.","tooltipPlay":"Click to play/pause.","tooltipProgress":"Click to change the playback position.","startPlaying":false}},"paperId":"abcjs-paper-38","audioId":"abcjs-audio-39"};
-          var abcString = "X:3\nK:Dm\nL:1\n\"@Minor\" \"_i\" [DFA] \"_iv\" [G_Bd] || \"@Major\" \"_V\" [A^ce] \"_VI\" [_Bdf] || \"@Diminished\" \"_ii°\" [EG_B] \"_vii°\" [^ceg] || \"@Augmented\" \"_III+\" [FA^c] ||";
-
-          function loadjs(id, url, cb) {
-            var js = document.createElement('script');
-
-            js.src = url;
-            if (id) {
-              js.id = id;
-            }
-            js.addEventListener('load', cb);
-            document.body.appendChild(js);
-            return js;
-          }
-          function loadcss(url) {
-            var css = document.createElement('link');
-
-            css.href = url;
-            css.rel = 'stylesheet';
-            css.type = 'text/css';
-            document.head.appendChild(css);
-          }
-          function colorRange(range, color) {
-            if (range && range.elements) {
-              range.elements.forEach(function (set) {
-                set.forEach(function (item) {
-                  item.setAttribute('fill', color);
-                });
-              });
-            }
-          }
-
-          function setup() {
-            var tunes = ABCJS.renderAbc(config.paperId, abcString, config.options || {});
-            var options = config.options || {};
-            var animationColors = config.animationColors;
-
-            if (config.animation) {
-              options.animate = Object.assign({
-                target: tunes[0],
-                qpm: 120,
-                listener: function (lastRange, currentRange, context) {
-                  colorRange(lastRange, animationColors[0]);
-                  colorRange(currentRange, animationColors[1]);
-                }
-              }, options.animate || {});
-            }
-            console.log(options);
-            if (config.midi) {
-              var synth = new ABCJS.synth.CreateSynth();
-              var myContext = new AudioContext();
-              synth.init({
-                audioContext: myContext,
-                visualObj: tunes[0],
-                millisecondsPerMeasure: tunes[0].millisecondsPerMeasure(),
-                options: {
-                  soundFontUrl: "https://paulrosen.github.io/midi-js-soundfonts/abcjs/",
-                  pan: [ -0.3, 0.3 ]
-                }
-              }).then(() => {
-                // Ready to play. The results are details about what was loaded.
-                var playButton = document.createElement("button");
-                playButton.textContent = "Play";
-                document.querySelector("#abcjs-audio-39").appendChild(playButton);
-                playButton.addEventListener("click", function () {
-                  synth.prime().then(() => {
-                    synth.start();
-                  });
-                });
-              }).catch(function (reason) {
-                  console.log(reason)
-              });
-            }
-          }
-
-          if (typeof window.abcjs === 'undefined' && !document.getElementById(config.scriptId)) {
-            loadcss(config.css);
-            loadjs(config.scriptId, config.js, setup);
-          } else {
-            window.addEventListener('load', setup);
-          }
-        })();
-      </script>
-    
-
-<h3 id="三和弦的转位"><a href="#三和弦的转位" class="headerlink" title="三和弦的转位"></a>三和弦的转位</h3><p>三和弦的<strong>第一转位（first inversion）</strong>是指以三音作为最低音（bass）的三和弦，<strong>第二转位（second inversion）</strong>是指以五音作为最低音的三和弦，<strong>原位（root position）</strong>指最低音为根音的三和弦。</p>
-<blockquote>
-<p>注意区分<strong>根音（root）</strong>与<strong>最低音（bass）</strong>。转位不改变根音，改变最低音。</p>
-</blockquote>
-<p>下图中左边三个是三和弦的第一转位，右边三个是三和弦的第二转位。</p>
-
-      <div id="abcjs-paper-40" class="abcjs-paper-container"></div>
-      <div id="abcjs-audio-41" class="abcjs-audio-container"></div>
-      <script>
-        (function () {
-          var config = {"js":"/js/abcjs-basic-min.js","css":"/css/abcjs-audio.css","scriptId":"hexo-tag-abcjs","midi":false,"animation":true,"animationColors":["#000000","#3d9afc"],"options":{"startingTune":0,"print":false,"visualTranspose":0,"scale":1,"responsive":"resize","inlineControls":{"loopToggle":true,"standard":true,"tooltipLoop":"Click to toggle play once/repeat.","tooltipReset":"Click to go to beginning.","tooltipPlay":"Click to play/pause.","tooltipProgress":"Click to change the playback position.","startPlaying":false}},"paperId":"abcjs-paper-40","audioId":"abcjs-audio-41"};
-          var abcString = "X:4\nK:C\nL:1\n[FAd] [K:clef=bass] [D,_B,F] [K:clef=alto] [^G,B,E] || [K:clef=bass] [E,,^C,A,] [K:clef=treble] [_A_df] [K:clef=bass] [G,,_E,C] ||";
-
-          function loadjs(id, url, cb) {
-            var js = document.createElement('script');
-
-            js.src = url;
-            if (id) {
-              js.id = id;
-            }
-            js.addEventListener('load', cb);
-            document.body.appendChild(js);
-            return js;
-          }
-          function loadcss(url) {
-            var css = document.createElement('link');
-
-            css.href = url;
-            css.rel = 'stylesheet';
-            css.type = 'text/css';
-            document.head.appendChild(css);
-          }
-          function colorRange(range, color) {
-            if (range && range.elements) {
-              range.elements.forEach(function (set) {
-                set.forEach(function (item) {
-                  item.setAttribute('fill', color);
-                });
-              });
-            }
-          }
-
-          function setup() {
-            var tunes = ABCJS.renderAbc(config.paperId, abcString, config.options || {});
-            var options = config.options || {};
-            var animationColors = config.animationColors;
-
-            if (config.animation) {
-              options.animate = Object.assign({
-                target: tunes[0],
-                qpm: 120,
-                listener: function (lastRange, currentRange, context) {
-                  colorRange(lastRange, animationColors[0]);
-                  colorRange(currentRange, animationColors[1]);
-                }
-              }, options.animate || {});
-            }
-            console.log(options);
-            if (config.midi) {
-              var synth = new ABCJS.synth.CreateSynth();
-              var myContext = new AudioContext();
-              synth.init({
-                audioContext: myContext,
-                visualObj: tunes[0],
-                millisecondsPerMeasure: tunes[0].millisecondsPerMeasure(),
-                options: {
-                  soundFontUrl: "https://paulrosen.github.io/midi-js-soundfonts/abcjs/",
-                  pan: [ -0.3, 0.3 ]
-                }
-              }).then(() => {
-                // Ready to play. The results are details about what was loaded.
-                var playButton = document.createElement("button");
-                playButton.textContent = "Play";
-                document.querySelector("#abcjs-audio-41").appendChild(playButton);
-                playButton.addEventListener("click", function () {
-                  synth.prime().then(() => {
-                    synth.start();
-                  });
-                });
-              }).catch(function (reason) {
-                  console.log(reason)
-              });
-            }
-          }
-
-          if (typeof window.abcjs === 'undefined' && !document.getElementById(config.scriptId)) {
-            loadcss(config.css);
-            loadjs(config.scriptId, config.js, setup);
-          } else {
-            window.addEventListener('load', setup);
-          }
-        })();
-      </script>
-    
-
-<h2 id="七和弦"><a href="#七和弦" class="headerlink" title="七和弦"></a>七和弦</h2><p>四个音三度堆叠形成七和弦（seventh chords），自底向上分别为根音（root）、三音（third）、五音（fifth）和七音（seventh）。</p>
-<p>七和弦相当于是在三和弦的基础上加入一个七音。三和弦有4种，常见七度有大七度、小七度、减七度3种*，因此可以组合出12种七和弦。</p>
-<blockquote>
-<p>*：在十二平均律中，增七度与纯八度相同，因此一般不讨论。</p>
-</blockquote>
-
-      <div id="abcjs-paper-42" class="abcjs-paper-container"></div>
-      <div id="abcjs-audio-43" class="abcjs-audio-container"></div>
-      <script>
-        (function () {
-          var config = {"js":"/js/abcjs-basic-min.js","css":"/css/abcjs-audio.css","scriptId":"hexo-tag-abcjs","midi":true,"animation":true,"animationColors":["#000000","#3d9afc"],"options":{"startingTune":0,"print":false,"visualTranspose":0,"scale":1,"responsive":"resize","inlineControls":{"loopToggle":true,"standard":true,"tooltipLoop":"Click to toggle play once/repeat.","tooltipReset":"Click to go to beginning.","tooltipPlay":"Click to play/pause.","tooltipProgress":"Click to change the playback position.","startPlaying":false}},"paperId":"abcjs-paper-42","audioId":"abcjs-audio-43"};
-          var abcString = "X:5\nK:C\nK:clef=bass\nL:1\n\"@Built on a\"\"@major triad\" [G,,B,,D,^F,] [G,,B,,D,=F,] [G,,B,,D,_F,] || \"@Built on a\"\"@minor triad\" [G,,_B,,D,^F,] [G,,_B,,D,=F,] [G,,_B,,D,_F,] || \"@Built on a\"\"@diminished triad\" [G,,_B,,_D,^F,]  [G,,_B,,_D,=F,] [G,,_B,,_D,_F,] || \"@Built on an\"\"@augmented triad\" [G,,=B,,^D,^F,]  [G,,B,,^D,=F,] [G,,B,,^D,_F,] ||";
-
-          function loadjs(id, url, cb) {
-            var js = document.createElement('script');
-
-            js.src = url;
-            if (id) {
-              js.id = id;
-            }
-            js.addEventListener('load', cb);
-            document.body.appendChild(js);
-            return js;
-          }
-          function loadcss(url) {
-            var css = document.createElement('link');
-
-            css.href = url;
-            css.rel = 'stylesheet';
-            css.type = 'text/css';
-            document.head.appendChild(css);
-          }
-          function colorRange(range, color) {
-            if (range && range.elements) {
-              range.elements.forEach(function (set) {
-                set.forEach(function (item) {
-                  item.setAttribute('fill', color);
-                });
-              });
-            }
-          }
-
-          function setup() {
-            var tunes = ABCJS.renderAbc(config.paperId, abcString, config.options || {});
-            var options = config.options || {};
-            var animationColors = config.animationColors;
-
-            if (config.animation) {
-              options.animate = Object.assign({
-                target: tunes[0],
-                qpm: 120,
-                listener: function (lastRange, currentRange, context) {
-                  colorRange(lastRange, animationColors[0]);
-                  colorRange(currentRange, animationColors[1]);
-                }
-              }, options.animate || {});
-            }
-            console.log(options);
-            if (config.midi) {
-              var synth = new ABCJS.synth.CreateSynth();
-              var myContext = new AudioContext();
-              synth.init({
-                audioContext: myContext,
-                visualObj: tunes[0],
-                millisecondsPerMeasure: tunes[0].millisecondsPerMeasure(),
-                options: {
-                  soundFontUrl: "https://paulrosen.github.io/midi-js-soundfonts/abcjs/",
-                  pan: [ -0.3, 0.3 ]
-                }
-              }).then(() => {
-                // Ready to play. The results are details about what was loaded.
-                var playButton = document.createElement("button");
-                playButton.textContent = "Play";
-                document.querySelector("#abcjs-audio-43").appendChild(playButton);
-                playButton.addEventListener("click", function () {
-                  synth.prime().then(() => {
-                    synth.start();
-                  });
-                });
-              }).catch(function (reason) {
-                  console.log(reason)
-              });
-            }
-          }
-
-          if (typeof window.abcjs === 'undefined' && !document.getElementById(config.scriptId)) {
-            loadcss(config.css);
-            loadjs(config.scriptId, config.js, setup);
-          } else {
-            window.addEventListener('load', setup);
-          }
-        })();
-      </script>
-    
-
-<p>上面的四组和弦分别基于大、小、减、增三和弦，每一组内的七度依次为大、小、减七度。</p>
-<p>七和弦的命名由三和弦和七音的位置确定。例如，上面的第一组和弦分别为大大七和弦、大小七和弦、大减七和弦（？）。</p>
-<p>虽然上面给出了非常多理论上存在的七和弦，但<strong>常用的七和弦</strong>只有4种：大小七、小小七、减小七、减减七。</p>
-
-      <div id="abcjs-paper-44" class="abcjs-paper-container"></div>
-      <div id="abcjs-audio-45" class="abcjs-audio-container"></div>
-      <script>
-        (function () {
-          var config = {"js":"/js/abcjs-basic-min.js","css":"/css/abcjs-audio.css","scriptId":"hexo-tag-abcjs","midi":true,"animation":true,"animationColors":["#000000","#3d9afc"],"options":{"startingTune":0,"print":false,"visualTranspose":0,"scale":1,"responsive":"resize","inlineControls":{"loopToggle":true,"standard":true,"tooltipLoop":"Click to toggle play once/repeat.","tooltipReset":"Click to go to beginning.","tooltipPlay":"Click to play/pause.","tooltipProgress":"Click to change the playback position.","startPlaying":false}},"paperId":"abcjs-paper-44","audioId":"abcjs-audio-45"};
-          var abcString = "X:6\nK:C\nK:clef=bass\nL:1\n\"_F-m7\" [G,,B,,D,_F,] \"_f-m7\" [G,,_B,,D,_F,] \"_f°-m7\" [G,,_B,,_D,_F,] \"_f°-d7\" [G,,_B,,_D,__F,] ||";
-
-          function loadjs(id, url, cb) {
-            var js = document.createElement('script');
-
-            js.src = url;
-            if (id) {
-              js.id = id;
-            }
-            js.addEventListener('load', cb);
-            document.body.appendChild(js);
-            return js;
-          }
-          function loadcss(url) {
-            var css = document.createElement('link');
-
-            css.href = url;
-            css.rel = 'stylesheet';
-            css.type = 'text/css';
-            document.head.appendChild(css);
-          }
-          function colorRange(range, color) {
-            if (range && range.elements) {
-              range.elements.forEach(function (set) {
-                set.forEach(function (item) {
-                  item.setAttribute('fill', color);
-                });
-              });
-            }
-          }
-
-          function setup() {
-            var tunes = ABCJS.renderAbc(config.paperId, abcString, config.options || {});
-            var options = config.options || {};
-            var animationColors = config.animationColors;
-
-            if (config.animation) {
-              options.animate = Object.assign({
-                target: tunes[0],
-                qpm: 120,
-                listener: function (lastRange, currentRange, context) {
-                  colorRange(lastRange, animationColors[0]);
-                  colorRange(currentRange, animationColors[1]);
-                }
-              }, options.animate || {});
-            }
-            console.log(options);
-            if (config.midi) {
-              var synth = new ABCJS.synth.CreateSynth();
-              var myContext = new AudioContext();
-              synth.init({
-                audioContext: myContext,
-                visualObj: tunes[0],
-                millisecondsPerMeasure: tunes[0].millisecondsPerMeasure(),
-                options: {
-                  soundFontUrl: "https://paulrosen.github.io/midi-js-soundfonts/abcjs/",
-                  pan: [ -0.3, 0.3 ]
-                }
-              }).then(() => {
-                // Ready to play. The results are details about what was loaded.
-                var playButton = document.createElement("button");
-                playButton.textContent = "Play";
-                document.querySelector("#abcjs-audio-45").appendChild(playButton);
-                playButton.addEventListener("click", function () {
-                  synth.prime().then(() => {
-                    synth.start();
-                  });
-                });
-              }).catch(function (reason) {
-                  console.log(reason)
-              });
-            }
-          }
-
-          if (typeof window.abcjs === 'undefined' && !document.getElementById(config.scriptId)) {
-            loadcss(config.css);
-            loadjs(config.scriptId, config.js, setup);
-          } else {
-            window.addEventListener('load', setup);
-          }
-        })();
-      </script>
-    
-
-<p>上面这四个和弦又被分别称为属七、小七、半减七、（全）减七和弦。</p>
-<h3 id="调式中的七和弦"><a href="#调式中的七和弦" class="headerlink" title="调式中的七和弦"></a>调式中的七和弦</h3><p>自然大调中，常用的七和弦为二级、五级、七级。下面是E♭大调中的这三个和弦。它们分别是小七、属七、半减七和弦。</p>
-
-      <div id="abcjs-paper-46" class="abcjs-paper-container"></div>
-      <div id="abcjs-audio-47" class="abcjs-audio-container"></div>
-      <script>
-        (function () {
-          var config = {"js":"/js/abcjs-basic-min.js","css":"/css/abcjs-audio.css","scriptId":"hexo-tag-abcjs","midi":true,"animation":true,"animationColors":["#000000","#3d9afc"],"options":{"startingTune":0,"print":false,"visualTranspose":0,"scale":1,"responsive":"resize","inlineControls":{"loopToggle":true,"standard":true,"tooltipLoop":"Click to toggle play once/repeat.","tooltipReset":"Click to go to beginning.","tooltipPlay":"Click to play/pause.","tooltipProgress":"Click to change the playback position.","startPlaying":false}},"paperId":"abcjs-paper-46","audioId":"abcjs-audio-47"};
-          var abcString = "X:7\nK:Eb\nL:1\n\"_m-m7\"\"_2°\"[FAce] \"_M-m7\"\"_5°\"[Bdfa] \"_d-m7\"\"_7°\"[DFAc] ||";
-
-          function loadjs(id, url, cb) {
-            var js = document.createElement('script');
-
-            js.src = url;
-            if (id) {
-              js.id = id;
-            }
-            js.addEventListener('load', cb);
-            document.body.appendChild(js);
-            return js;
-          }
-          function loadcss(url) {
-            var css = document.createElement('link');
-
-            css.href = url;
-            css.rel = 'stylesheet';
-            css.type = 'text/css';
-            document.head.appendChild(css);
-          }
-          function colorRange(range, color) {
-            if (range && range.elements) {
-              range.elements.forEach(function (set) {
-                set.forEach(function (item) {
-                  item.setAttribute('fill', color);
-                });
-              });
-            }
-          }
-
-          function setup() {
-            var tunes = ABCJS.renderAbc(config.paperId, abcString, config.options || {});
-            var options = config.options || {};
-            var animationColors = config.animationColors;
-
-            if (config.animation) {
-              options.animate = Object.assign({
-                target: tunes[0],
-                qpm: 120,
-                listener: function (lastRange, currentRange, context) {
-                  colorRange(lastRange, animationColors[0]);
-                  colorRange(currentRange, animationColors[1]);
-                }
-              }, options.animate || {});
-            }
-            console.log(options);
-            if (config.midi) {
-              var synth = new ABCJS.synth.CreateSynth();
-              var myContext = new AudioContext();
-              synth.init({
-                audioContext: myContext,
-                visualObj: tunes[0],
-                millisecondsPerMeasure: tunes[0].millisecondsPerMeasure(),
-                options: {
-                  soundFontUrl: "https://paulrosen.github.io/midi-js-soundfonts/abcjs/",
-                  pan: [ -0.3, 0.3 ]
-                }
-              }).then(() => {
-                // Ready to play. The results are details about what was loaded.
-                var playButton = document.createElement("button");
-                playButton.textContent = "Play";
-                document.querySelector("#abcjs-audio-47").appendChild(playButton);
-                playButton.addEventListener("click", function () {
-                  synth.prime().then(() => {
-                    synth.start();
-                  });
-                });
-              }).catch(function (reason) {
-                  console.log(reason)
-              });
-            }
-          }
-
-          if (typeof window.abcjs === 'undefined' && !document.getElementById(config.scriptId)) {
-            loadcss(config.css);
-            loadjs(config.scriptId, config.js, setup);
-          } else {
-            window.addEventListener('load', setup);
-          }
-        })();
-      </script>
-    
-
-<p>对于和声小调，下面给出了G和声小调中，这三个位置的和弦。它们分别是半减七、属七、全减七和弦。</p>
-
       <div id="abcjs-paper-48" class="abcjs-paper-container"></div>
       <div id="abcjs-audio-49" class="abcjs-audio-container"></div>
       <script>
         (function () {
           var config = {"js":"/js/abcjs-basic-min.js","css":"/css/abcjs-audio.css","scriptId":"hexo-tag-abcjs","midi":true,"animation":true,"animationColors":["#000000","#3d9afc"],"options":{"startingTune":0,"print":false,"visualTranspose":0,"scale":1,"responsive":"resize","inlineControls":{"loopToggle":true,"standard":true,"tooltipLoop":"Click to toggle play once/repeat.","tooltipReset":"Click to go to beginning.","tooltipPlay":"Click to play/pause.","tooltipProgress":"Click to change the playback position.","startPlaying":false}},"paperId":"abcjs-paper-48","audioId":"abcjs-audio-49"};
-          var abcString = "X:8\nK:G\nL:1\n\"_d-m7\"\"_2°\"[Ac_eg] \"_M-m7\"\"_5°\"[D^FAc] \"_d-d7\"\"_7°\"[^FAc_e] ||";
+          var abcString = "X:1\nK:C\nL:1\n\"@Major\" [GBd] \"@Minor\" [G_Bd] \"@Aug\" [G^B^d] \"@Dim\" [G_B_d] ||";
 
           function loadjs(id, url, cb) {
             var js = document.createElement('script');
@@ -873,20 +225,14 @@
       </script>
     
 
-<h3 id="七和弦的转位"><a href="#七和弦的转位" class="headerlink" title="七和弦的转位"></a>七和弦的转位</h3><ul>
-<li>原位：最低音为根音；</li>
-<li>第一转位：最低音为三音；</li>
-<li>第二转位：最低音为五音；</li>
-<li>第三转位：最低音为七音。</li>
-</ul>
-<p>下面是B♭大调中的五级七和弦（属七和弦）的原位和三种转位，以及它们的符号。</p>
+<p>在大调中，一、四、五级三和弦是大和弦，二、三、六级三和弦是小和弦，七级三和弦是减和弦。</p>
 
       <div id="abcjs-paper-50" class="abcjs-paper-container"></div>
       <div id="abcjs-audio-51" class="abcjs-audio-container"></div>
       <script>
         (function () {
           var config = {"js":"/js/abcjs-basic-min.js","css":"/css/abcjs-audio.css","scriptId":"hexo-tag-abcjs","midi":true,"animation":true,"animationColors":["#000000","#3d9afc"],"options":{"startingTune":0,"print":false,"visualTranspose":0,"scale":1,"responsive":"resize","inlineControls":{"loopToggle":true,"standard":true,"tooltipLoop":"Click to toggle play once/repeat.","tooltipReset":"Click to go to beginning.","tooltipPlay":"Click to play/pause.","tooltipProgress":"Click to change the playback position.","startPlaying":false}},"paperId":"abcjs-paper-50","audioId":"abcjs-audio-51"};
-          var abcString = "X:9\nK:Bb\nL:1\n\"_V⁷\" [FAce] \"_V⁶₅\" [Acef] \"_V⁴₃\" [cefa] \"_V²\" [efac'] ||";
+          var abcString = "X:2\nK:Bb\nK:clef=bass\nL:1\n\"_I\" [_B,,D,F,] \"@Major\" \"_IV\" [_E,G,_B,] \"_V\" [F,A,C] || \"_ii\" [C,_E,G,] \"@Minor\" \"_iii\" [D,F,A,] \"_vi\" [G,_B,D] || \"@Diminished\" \"_vii°\" [A,,C,_E,] ||";
 
           function loadjs(id, url, cb) {
             var js = document.createElement('script');
@@ -970,14 +316,14 @@
       </script>
     
 
-<h3 id="小技巧：快速定位七和弦根音"><a href="#小技巧：快速定位七和弦根音" class="headerlink" title="小技巧：快速定位七和弦根音"></a>小技巧：快速定位七和弦根音</h3><p>快速定位根音的方法：寻找四个音中两个音名相邻的，较高的即为根音。例如：</p>
+<p>在和声小调中，一、四级是小和弦，五、六级是大和弦，二、七级是减和弦，三级是增和弦。</p>
 
       <div id="abcjs-paper-52" class="abcjs-paper-container"></div>
       <div id="abcjs-audio-53" class="abcjs-audio-container"></div>
       <script>
         (function () {
-          var config = {"js":"/js/abcjs-basic-min.js","css":"/css/abcjs-audio.css","scriptId":"hexo-tag-abcjs","midi":false,"animation":true,"animationColors":["#000000","#3d9afc"],"options":{"startingTune":0,"print":false,"visualTranspose":0,"scale":1,"responsive":"resize","inlineControls":{"loopToggle":true,"standard":true,"tooltipLoop":"Click to toggle play once/repeat.","tooltipReset":"Click to go to beginning.","tooltipPlay":"Click to play/pause.","tooltipProgress":"Click to change the playback position.","startPlaying":false}},"paperId":"abcjs-paper-52","audioId":"abcjs-audio-53"};
-          var abcString = "X:10\nK:C\nK:clef=bass\nL:1\n[_B,_E,G,,D,]";
+          var config = {"js":"/js/abcjs-basic-min.js","css":"/css/abcjs-audio.css","scriptId":"hexo-tag-abcjs","midi":true,"animation":true,"animationColors":["#000000","#3d9afc"],"options":{"startingTune":0,"print":false,"visualTranspose":0,"scale":1,"responsive":"resize","inlineControls":{"loopToggle":true,"standard":true,"tooltipLoop":"Click to toggle play once/repeat.","tooltipReset":"Click to go to beginning.","tooltipPlay":"Click to play/pause.","tooltipProgress":"Click to change the playback position.","startPlaying":false}},"paperId":"abcjs-paper-52","audioId":"abcjs-audio-53"};
+          var abcString = "X:3\nK:Dm\nL:1\n\"@Minor\" \"_i\" [DFA] \"_iv\" [G_Bd] || \"@Major\" \"_V\" [A^ce] \"_VI\" [_Bdf] || \"@Diminished\" \"_ii°\" [EG_B] \"_vii°\" [^ceg] || \"@Augmented\" \"_III+\" [FA^c] ||";
 
           function loadjs(id, url, cb) {
             var js = document.createElement('script');
@@ -1061,15 +407,18 @@
       </script>
     
 
-<p>这个例子中，D和降E相隔小二度，可以快速识别出降E是根音，且根音与七音的距离是大七度。进一步观察发现，E♭-G-B♭是大三和弦，且最低音是三音，因此可以确定这个和弦是大大七和弦的第一转位。</p>
-<h3 id="七和弦的解决"><a href="#七和弦的解决" class="headerlink" title="七和弦的解决"></a>七和弦的解决</h3><p>五级、七级七和弦倾向于解决至主和弦，二级七和弦倾向于进行到五级和弦。下面给出一个F大调的五级七和弦进行到主和弦的谱例。</p>
-<h4 id="五级七和弦"><a href="#五级七和弦" class="headerlink" title="五级七和弦"></a>五级七和弦</h4>
+<h3 id="三和弦的转位"><a href="#三和弦的转位" class="headerlink" title="三和弦的转位"></a>三和弦的转位</h3><p>三和弦的<strong>第一转位（first inversion）</strong>是指以三音作为最低音（bass）的三和弦，<strong>第二转位（second inversion）</strong>是指以五音作为最低音的三和弦，<strong>原位（root position）</strong>指最低音为根音的三和弦。</p>
+<blockquote>
+<p>注意区分<strong>根音（root）</strong>与<strong>最低音（bass）</strong>。转位不改变根音，改变最低音。</p>
+</blockquote>
+<p>下图中左边三个是三和弦的第一转位，右边三个是三和弦的第二转位。</p>
+
       <div id="abcjs-paper-54" class="abcjs-paper-container"></div>
       <div id="abcjs-audio-55" class="abcjs-audio-container"></div>
       <script>
         (function () {
-          var config = {"js":"/js/abcjs-basic-min.js","css":"/css/abcjs-audio.css","scriptId":"hexo-tag-abcjs","midi":true,"animation":true,"animationColors":["#000000","#3d9afc"],"options":{"startingTune":0,"print":false,"visualTranspose":0,"scale":1,"responsive":"resize","inlineControls":{"loopToggle":true,"standard":true,"tooltipLoop":"Click to toggle play once/repeat.","tooltipReset":"Click to go to beginning.","tooltipPlay":"Click to play/pause.","tooltipProgress":"Click to change the playback position.","startPlaying":false}},"paperId":"abcjs-paper-54","audioId":"abcjs-audio-55"};
-          var abcString = "X:11\nK:F\nL:1\n\"_V⁴₃ →\" [GBce] \"_I, in which...\" [FAcf] || \"@augmented\"\"@fourth...\" [Be] \"@...resolves\"\"@to minor sixth.\" [Af] ||";
+          var config = {"js":"/js/abcjs-basic-min.js","css":"/css/abcjs-audio.css","scriptId":"hexo-tag-abcjs","midi":false,"animation":true,"animationColors":["#000000","#3d9afc"],"options":{"startingTune":0,"print":false,"visualTranspose":0,"scale":1,"responsive":"resize","inlineControls":{"loopToggle":true,"standard":true,"tooltipLoop":"Click to toggle play once/repeat.","tooltipReset":"Click to go to beginning.","tooltipPlay":"Click to play/pause.","tooltipProgress":"Click to change the playback position.","startPlaying":false}},"paperId":"abcjs-paper-54","audioId":"abcjs-audio-55"};
+          var abcString = "X:4\nK:C\nL:1\n[FAd] [K:clef=bass] [D,_B,F] [K:clef=alto] [^G,B,E] || [K:clef=bass] [E,,^C,A,] [K:clef=treble] [_A_df] [K:clef=bass] [G,,_E,C] ||";
 
           function loadjs(id, url, cb) {
             var js = document.createElement('script');
@@ -1153,14 +502,18 @@
       </script>
     
 
-<p>这个例子中，由上至下，七级音（导音）向上小二度到主音，属音保持，四级音向下小二度行进到三级，二级向下大二度行进到一级，充分利用每个音级的倾向性。此外，四级与七级音形成不稳定的减五度（转位后变为增四度，二者对于平均律来讲不可区分），有极强的倾向解决至主和弦的大三度或小六度。下面给出的是增四度解决到小六度、减五度解决到大三度的谱例。</p>
+<h2 id="七和弦"><a href="#七和弦" class="headerlink" title="七和弦"></a>七和弦</h2><p>四个音三度堆叠形成七和弦（seventh chords），自底向上分别为根音（root）、三音（third）、五音（fifth）和七音（seventh）。</p>
+<p>七和弦相当于是在三和弦的基础上加入一个七音。三和弦有4种，常见七度有大七度、小七度、减七度3种*，因此可以组合出12种七和弦。</p>
+<blockquote>
+<p>*：在十二平均律中，增七度与纯八度相同，因此一般不讨论。</p>
+</blockquote>
 
       <div id="abcjs-paper-56" class="abcjs-paper-container"></div>
       <div id="abcjs-audio-57" class="abcjs-audio-container"></div>
       <script>
         (function () {
           var config = {"js":"/js/abcjs-basic-min.js","css":"/css/abcjs-audio.css","scriptId":"hexo-tag-abcjs","midi":true,"animation":true,"animationColors":["#000000","#3d9afc"],"options":{"startingTune":0,"print":false,"visualTranspose":0,"scale":1,"responsive":"resize","inlineControls":{"loopToggle":true,"standard":true,"tooltipLoop":"Click to toggle play once/repeat.","tooltipReset":"Click to go to beginning.","tooltipPlay":"Click to play/pause.","tooltipProgress":"Click to change the playback position.","startPlaying":false}},"paperId":"abcjs-paper-56","audioId":"abcjs-audio-57"};
-          var abcString = "X:11\nK:F\nL:1\n\"@Augmented\"\"@fourth→\" [Be] \"@minor sixth\" [Af] || \"@Diminished\"\"@fifth→\" [EB] \"@major third\" [FA]||";
+          var abcString = "X:5\nK:C\nK:clef=bass\nL:1\n\"@Built on a\"\"@major triad\" [G,,B,,D,^F,] [G,,B,,D,=F,] [G,,B,,D,_F,] || \"@Built on a\"\"@minor triad\" [G,,_B,,D,^F,] [G,,_B,,D,=F,] [G,,_B,,D,_F,] || \"@Built on a\"\"@diminished triad\" [G,,_B,,_D,^F,]  [G,,_B,,_D,=F,] [G,,_B,,_D,_F,] || \"@Built on an\"\"@augmented triad\" [G,,=B,,^D,^F,]  [G,,B,,^D,=F,] [G,,B,,^D,_F,] ||";
 
           function loadjs(id, url, cb) {
             var js = document.createElement('script');
@@ -1244,14 +597,16 @@
       </script>
     
 
-<p>四种位置的属七和弦都可以解决到主和弦。</p>
+<p>上面的四组和弦分别基于大、小、减、增三和弦，每一组内的七度依次为大、小、减七度。</p>
+<p>七和弦的命名由三和弦和七音的位置确定。例如，上面的第一组和弦分别为大大七和弦、大小七和弦、大减七和弦（？）。</p>
+<p>虽然上面给出了非常多理论上存在的七和弦，但<strong>常用的七和弦</strong>只有4种：大小七、小小七、减小七、减减七。</p>
 
       <div id="abcjs-paper-58" class="abcjs-paper-container"></div>
       <div id="abcjs-audio-59" class="abcjs-audio-container"></div>
       <script>
         (function () {
           var config = {"js":"/js/abcjs-basic-min.js","css":"/css/abcjs-audio.css","scriptId":"hexo-tag-abcjs","midi":true,"animation":true,"animationColors":["#000000","#3d9afc"],"options":{"startingTune":0,"print":false,"visualTranspose":0,"scale":1,"responsive":"resize","inlineControls":{"loopToggle":true,"standard":true,"tooltipLoop":"Click to toggle play once/repeat.","tooltipReset":"Click to go to beginning.","tooltipPlay":"Click to play/pause.","tooltipProgress":"Click to change the playback position.","startPlaying":false}},"paperId":"abcjs-paper-58","audioId":"abcjs-audio-59"};
-          var abcString = "X:12\nK:F\nL:1\n\"_V⁷\"[CEGB] \"_I\"[FAcf] || \"_V⁶₅\"[EGBc] \"_I\"[FAcc] || \"_V⁴₃\"[GBce] \"_I\"[FAcf] || \"_V²\"[Bceg] \"_I⁶\"[Acfa] ||";
+          var abcString = "X:6\nK:C\nK:clef=bass\nL:1\n\"_F-m7\" [G,,B,,D,_F,] \"_f-m7\" [G,,_B,,D,_F,] \"_f°-m7\" [G,,_B,,_D,_F,] \"_f°-d7\" [G,,_B,,_D,__F,] ||";
 
           function loadjs(id, url, cb) {
             var js = document.createElement('script');
@@ -1335,14 +690,15 @@
       </script>
     
 
-<h4 id="七级七和弦"><a href="#七级七和弦" class="headerlink" title="七级七和弦"></a>七级七和弦</h4><p>下面两个例子分别是G大调与G小调中，七级七和弦进行到主和弦。</p>
+<p>上面这四个和弦又被分别称为属七、小七、半减七、（全）减七和弦。</p>
+<h3 id="调式中的七和弦"><a href="#调式中的七和弦" class="headerlink" title="调式中的七和弦"></a>调式中的七和弦</h3><p>自然大调中，常用的七和弦为二级、五级、七级。下面是E♭大调中的这三个和弦。它们分别是小七、属七、半减七和弦。</p>
 
       <div id="abcjs-paper-60" class="abcjs-paper-container"></div>
       <div id="abcjs-audio-61" class="abcjs-audio-container"></div>
       <script>
         (function () {
           var config = {"js":"/js/abcjs-basic-min.js","css":"/css/abcjs-audio.css","scriptId":"hexo-tag-abcjs","midi":true,"animation":true,"animationColors":["#000000","#3d9afc"],"options":{"startingTune":0,"print":false,"visualTranspose":0,"scale":1,"responsive":"resize","inlineControls":{"loopToggle":true,"standard":true,"tooltipLoop":"Click to toggle play once/repeat.","tooltipReset":"Click to go to beginning.","tooltipPlay":"Click to play/pause.","tooltipProgress":"Click to change the playback position.","startPlaying":false}},"paperId":"abcjs-paper-60","audioId":"abcjs-audio-61"};
-          var abcString = "X:11\nK:G\nL:1\n\"_vii𝆩⁴₃ →\" [CE^FA] \"_I⁶\" [B,DGB] ||";
+          var abcString = "X:7\nK:Eb\nL:1\n\"_m-m7\"\"_2°\"[FAce] \"_M-m7\"\"_5°\"[Bdfa] \"_d-m7\"\"_7°\"[DFAc] ||";
 
           function loadjs(id, url, cb) {
             var js = document.createElement('script');
@@ -1426,13 +782,14 @@
       </script>
     
 
+<p>对于和声小调，下面给出了G和声小调中，这三个位置的和弦。它们分别是半减七、属七、全减七和弦。</p>
 
       <div id="abcjs-paper-62" class="abcjs-paper-container"></div>
       <div id="abcjs-audio-63" class="abcjs-audio-container"></div>
       <script>
         (function () {
           var config = {"js":"/js/abcjs-basic-min.js","css":"/css/abcjs-audio.css","scriptId":"hexo-tag-abcjs","midi":true,"animation":true,"animationColors":["#000000","#3d9afc"],"options":{"startingTune":0,"print":false,"visualTranspose":0,"scale":1,"responsive":"resize","inlineControls":{"loopToggle":true,"standard":true,"tooltipLoop":"Click to toggle play once/repeat.","tooltipReset":"Click to go to beginning.","tooltipPlay":"Click to play/pause.","tooltipProgress":"Click to change the playback position.","startPlaying":false}},"paperId":"abcjs-paper-62","audioId":"abcjs-audio-63"};
-          var abcString = "X:12\nK:G\nL:1\n\"_vii°⁶₅ →\" [Ac_ef] \"_I\" [G_Bdg] ||";
+          var abcString = "X:8\nK:G\nL:1\n\"_d-m7\"\"_2°\"[Ac_eg] \"_M-m7\"\"_5°\"[D^FAc] \"_d-d7\"\"_7°\"[^FAc_e] ||";
 
           function loadjs(id, url, cb) {
             var js = document.createElement('script');
@@ -1516,14 +873,20 @@
       </script>
     
 
-<h4 id="二级七和弦"><a href="#二级七和弦" class="headerlink" title="二级七和弦"></a>二级七和弦</h4><p>二级七和弦倾向于进行到五级和弦，不过倾向性并不那么强。下面分别是E♭大调与E♭小调中的进行。</p>
+<h3 id="七和弦的转位"><a href="#七和弦的转位" class="headerlink" title="七和弦的转位"></a>七和弦的转位</h3><ul>
+<li>原位：最低音为根音；</li>
+<li>第一转位：最低音为三音；</li>
+<li>第二转位：最低音为五音；</li>
+<li>第三转位：最低音为七音。</li>
+</ul>
+<p>下面是B♭大调中的五级七和弦（属七和弦）的原位和三种转位，以及它们的符号。</p>
 
       <div id="abcjs-paper-64" class="abcjs-paper-container"></div>
       <div id="abcjs-audio-65" class="abcjs-audio-container"></div>
       <script>
         (function () {
           var config = {"js":"/js/abcjs-basic-min.js","css":"/css/abcjs-audio.css","scriptId":"hexo-tag-abcjs","midi":true,"animation":true,"animationColors":["#000000","#3d9afc"],"options":{"startingTune":0,"print":false,"visualTranspose":0,"scale":1,"responsive":"resize","inlineControls":{"loopToggle":true,"standard":true,"tooltipLoop":"Click to toggle play once/repeat.","tooltipReset":"Click to go to beginning.","tooltipPlay":"Click to play/pause.","tooltipProgress":"Click to change the playback position.","startPlaying":false}},"paperId":"abcjs-paper-64","audioId":"abcjs-audio-65"};
-          var abcString = "X:13\nK:Eb\nL:1\n\"_ii⁷ →\" [FAce] \"_V⁶₄, or\" [FBd] || \"_ii⁷ →\" [FAce] \"_V⁴₃\" [FABd] ||";
+          var abcString = "X:9\nK:Bb\nL:1\n\"_V⁷\" [FAce] \"_V⁶₅\" [Acef] \"_V⁴₃\" [cefa] \"_V²\" [efac'] ||";
 
           function loadjs(id, url, cb) {
             var js = document.createElement('script');
@@ -1607,13 +970,14 @@
       </script>
     
 
+<h3 id="小技巧：快速定位七和弦根音"><a href="#小技巧：快速定位七和弦根音" class="headerlink" title="小技巧：快速定位七和弦根音"></a>小技巧：快速定位七和弦根音</h3><p>快速定位根音的方法：寻找四个音中两个音名相邻的，较高的即为根音。例如：</p>
 
       <div id="abcjs-paper-66" class="abcjs-paper-container"></div>
       <div id="abcjs-audio-67" class="abcjs-audio-container"></div>
       <script>
         (function () {
-          var config = {"js":"/js/abcjs-basic-min.js","css":"/css/abcjs-audio.css","scriptId":"hexo-tag-abcjs","midi":true,"animation":true,"animationColors":["#000000","#3d9afc"],"options":{"startingTune":0,"print":false,"visualTranspose":0,"scale":1,"responsive":"resize","inlineControls":{"loopToggle":true,"standard":true,"tooltipLoop":"Click to toggle play once/repeat.","tooltipReset":"Click to go to beginning.","tooltipPlay":"Click to play/pause.","tooltipProgress":"Click to change the playback position.","startPlaying":false}},"paperId":"abcjs-paper-66","audioId":"abcjs-audio-67"};
-          var abcString = "X:13\nK:Eb\nL:1\n\"_ii𝆩² →\" [EFAc] \"_V⁶, or\" [=DFB] || \"_ii𝆩² →\" [EFAc] \"_V⁶₅\" [=DFAB] ||";
+          var config = {"js":"/js/abcjs-basic-min.js","css":"/css/abcjs-audio.css","scriptId":"hexo-tag-abcjs","midi":false,"animation":true,"animationColors":["#000000","#3d9afc"],"options":{"startingTune":0,"print":false,"visualTranspose":0,"scale":1,"responsive":"resize","inlineControls":{"loopToggle":true,"standard":true,"tooltipLoop":"Click to toggle play once/repeat.","tooltipReset":"Click to go to beginning.","tooltipPlay":"Click to play/pause.","tooltipProgress":"Click to change the playback position.","startPlaying":false}},"paperId":"abcjs-paper-66","audioId":"abcjs-audio-67"};
+          var abcString = "X:10\nK:C\nK:clef=bass\nL:1\n[_B,_E,G,,D,]";
 
           function loadjs(id, url, cb) {
             var js = document.createElement('script');
@@ -1676,6 +1040,642 @@
                 var playButton = document.createElement("button");
                 playButton.textContent = "Play";
                 document.querySelector("#abcjs-audio-67").appendChild(playButton);
+                playButton.addEventListener("click", function () {
+                  synth.prime().then(() => {
+                    synth.start();
+                  });
+                });
+              }).catch(function (reason) {
+                  console.log(reason)
+              });
+            }
+          }
+
+          if (typeof window.abcjs === 'undefined' && !document.getElementById(config.scriptId)) {
+            loadcss(config.css);
+            loadjs(config.scriptId, config.js, setup);
+          } else {
+            window.addEventListener('load', setup);
+          }
+        })();
+      </script>
+    
+
+<p>这个例子中，D和降E相隔小二度，可以快速识别出降E是根音，且根音与七音的距离是大七度。进一步观察发现，E♭-G-B♭是大三和弦，且最低音是三音，因此可以确定这个和弦是大大七和弦的第一转位。</p>
+<h3 id="七和弦的解决"><a href="#七和弦的解决" class="headerlink" title="七和弦的解决"></a>七和弦的解决</h3><p>五级、七级七和弦倾向于解决至主和弦，二级七和弦倾向于进行到五级和弦。下面给出一个F大调的五级七和弦进行到主和弦的谱例。</p>
+<h4 id="五级七和弦"><a href="#五级七和弦" class="headerlink" title="五级七和弦"></a>五级七和弦</h4>
+      <div id="abcjs-paper-68" class="abcjs-paper-container"></div>
+      <div id="abcjs-audio-69" class="abcjs-audio-container"></div>
+      <script>
+        (function () {
+          var config = {"js":"/js/abcjs-basic-min.js","css":"/css/abcjs-audio.css","scriptId":"hexo-tag-abcjs","midi":true,"animation":true,"animationColors":["#000000","#3d9afc"],"options":{"startingTune":0,"print":false,"visualTranspose":0,"scale":1,"responsive":"resize","inlineControls":{"loopToggle":true,"standard":true,"tooltipLoop":"Click to toggle play once/repeat.","tooltipReset":"Click to go to beginning.","tooltipPlay":"Click to play/pause.","tooltipProgress":"Click to change the playback position.","startPlaying":false}},"paperId":"abcjs-paper-68","audioId":"abcjs-audio-69"};
+          var abcString = "X:11\nK:F\nL:1\n\"_V⁴₃ →\" [GBce] \"_I, in which...\" [FAcf] || \"@augmented\"\"@fourth...\" [Be] \"@...resolves\"\"@to minor sixth.\" [Af] ||";
+
+          function loadjs(id, url, cb) {
+            var js = document.createElement('script');
+
+            js.src = url;
+            if (id) {
+              js.id = id;
+            }
+            js.addEventListener('load', cb);
+            document.body.appendChild(js);
+            return js;
+          }
+          function loadcss(url) {
+            var css = document.createElement('link');
+
+            css.href = url;
+            css.rel = 'stylesheet';
+            css.type = 'text/css';
+            document.head.appendChild(css);
+          }
+          function colorRange(range, color) {
+            if (range && range.elements) {
+              range.elements.forEach(function (set) {
+                set.forEach(function (item) {
+                  item.setAttribute('fill', color);
+                });
+              });
+            }
+          }
+
+          function setup() {
+            var tunes = ABCJS.renderAbc(config.paperId, abcString, config.options || {});
+            var options = config.options || {};
+            var animationColors = config.animationColors;
+
+            if (config.animation) {
+              options.animate = Object.assign({
+                target: tunes[0],
+                qpm: 120,
+                listener: function (lastRange, currentRange, context) {
+                  colorRange(lastRange, animationColors[0]);
+                  colorRange(currentRange, animationColors[1]);
+                }
+              }, options.animate || {});
+            }
+            console.log(options);
+            if (config.midi) {
+              var synth = new ABCJS.synth.CreateSynth();
+              var myContext = new AudioContext();
+              synth.init({
+                audioContext: myContext,
+                visualObj: tunes[0],
+                millisecondsPerMeasure: tunes[0].millisecondsPerMeasure(),
+                options: {
+                  soundFontUrl: "https://paulrosen.github.io/midi-js-soundfonts/abcjs/",
+                  pan: [ -0.3, 0.3 ]
+                }
+              }).then(() => {
+                // Ready to play. The results are details about what was loaded.
+                var playButton = document.createElement("button");
+                playButton.textContent = "Play";
+                document.querySelector("#abcjs-audio-69").appendChild(playButton);
+                playButton.addEventListener("click", function () {
+                  synth.prime().then(() => {
+                    synth.start();
+                  });
+                });
+              }).catch(function (reason) {
+                  console.log(reason)
+              });
+            }
+          }
+
+          if (typeof window.abcjs === 'undefined' && !document.getElementById(config.scriptId)) {
+            loadcss(config.css);
+            loadjs(config.scriptId, config.js, setup);
+          } else {
+            window.addEventListener('load', setup);
+          }
+        })();
+      </script>
+    
+
+<p>这个例子中，由上至下，七级音（导音）向上小二度到主音，属音保持，四级音向下小二度行进到三级，二级向下大二度行进到一级，充分利用每个音级的倾向性。此外，四级与七级音形成不稳定的减五度（转位后变为增四度，二者对于平均律来讲不可区分），有极强的倾向解决至主和弦的大三度或小六度。下面给出的是增四度解决到小六度、减五度解决到大三度的谱例。</p>
+
+      <div id="abcjs-paper-70" class="abcjs-paper-container"></div>
+      <div id="abcjs-audio-71" class="abcjs-audio-container"></div>
+      <script>
+        (function () {
+          var config = {"js":"/js/abcjs-basic-min.js","css":"/css/abcjs-audio.css","scriptId":"hexo-tag-abcjs","midi":true,"animation":true,"animationColors":["#000000","#3d9afc"],"options":{"startingTune":0,"print":false,"visualTranspose":0,"scale":1,"responsive":"resize","inlineControls":{"loopToggle":true,"standard":true,"tooltipLoop":"Click to toggle play once/repeat.","tooltipReset":"Click to go to beginning.","tooltipPlay":"Click to play/pause.","tooltipProgress":"Click to change the playback position.","startPlaying":false}},"paperId":"abcjs-paper-70","audioId":"abcjs-audio-71"};
+          var abcString = "X:11\nK:F\nL:1\n\"@Augmented\"\"@fourth→\" [Be] \"@minor sixth\" [Af] || \"@Diminished\"\"@fifth→\" [EB] \"@major third\" [FA]||";
+
+          function loadjs(id, url, cb) {
+            var js = document.createElement('script');
+
+            js.src = url;
+            if (id) {
+              js.id = id;
+            }
+            js.addEventListener('load', cb);
+            document.body.appendChild(js);
+            return js;
+          }
+          function loadcss(url) {
+            var css = document.createElement('link');
+
+            css.href = url;
+            css.rel = 'stylesheet';
+            css.type = 'text/css';
+            document.head.appendChild(css);
+          }
+          function colorRange(range, color) {
+            if (range && range.elements) {
+              range.elements.forEach(function (set) {
+                set.forEach(function (item) {
+                  item.setAttribute('fill', color);
+                });
+              });
+            }
+          }
+
+          function setup() {
+            var tunes = ABCJS.renderAbc(config.paperId, abcString, config.options || {});
+            var options = config.options || {};
+            var animationColors = config.animationColors;
+
+            if (config.animation) {
+              options.animate = Object.assign({
+                target: tunes[0],
+                qpm: 120,
+                listener: function (lastRange, currentRange, context) {
+                  colorRange(lastRange, animationColors[0]);
+                  colorRange(currentRange, animationColors[1]);
+                }
+              }, options.animate || {});
+            }
+            console.log(options);
+            if (config.midi) {
+              var synth = new ABCJS.synth.CreateSynth();
+              var myContext = new AudioContext();
+              synth.init({
+                audioContext: myContext,
+                visualObj: tunes[0],
+                millisecondsPerMeasure: tunes[0].millisecondsPerMeasure(),
+                options: {
+                  soundFontUrl: "https://paulrosen.github.io/midi-js-soundfonts/abcjs/",
+                  pan: [ -0.3, 0.3 ]
+                }
+              }).then(() => {
+                // Ready to play. The results are details about what was loaded.
+                var playButton = document.createElement("button");
+                playButton.textContent = "Play";
+                document.querySelector("#abcjs-audio-71").appendChild(playButton);
+                playButton.addEventListener("click", function () {
+                  synth.prime().then(() => {
+                    synth.start();
+                  });
+                });
+              }).catch(function (reason) {
+                  console.log(reason)
+              });
+            }
+          }
+
+          if (typeof window.abcjs === 'undefined' && !document.getElementById(config.scriptId)) {
+            loadcss(config.css);
+            loadjs(config.scriptId, config.js, setup);
+          } else {
+            window.addEventListener('load', setup);
+          }
+        })();
+      </script>
+    
+
+<p>四种位置的属七和弦都可以解决到主和弦。</p>
+
+      <div id="abcjs-paper-72" class="abcjs-paper-container"></div>
+      <div id="abcjs-audio-73" class="abcjs-audio-container"></div>
+      <script>
+        (function () {
+          var config = {"js":"/js/abcjs-basic-min.js","css":"/css/abcjs-audio.css","scriptId":"hexo-tag-abcjs","midi":true,"animation":true,"animationColors":["#000000","#3d9afc"],"options":{"startingTune":0,"print":false,"visualTranspose":0,"scale":1,"responsive":"resize","inlineControls":{"loopToggle":true,"standard":true,"tooltipLoop":"Click to toggle play once/repeat.","tooltipReset":"Click to go to beginning.","tooltipPlay":"Click to play/pause.","tooltipProgress":"Click to change the playback position.","startPlaying":false}},"paperId":"abcjs-paper-72","audioId":"abcjs-audio-73"};
+          var abcString = "X:12\nK:F\nL:1\n\"_V⁷\"[CEGB] \"_I\"[FAcf] || \"_V⁶₅\"[EGBc] \"_I\"[FAcc] || \"_V⁴₃\"[GBce] \"_I\"[FAcf] || \"_V²\"[Bceg] \"_I⁶\"[Acfa] ||";
+
+          function loadjs(id, url, cb) {
+            var js = document.createElement('script');
+
+            js.src = url;
+            if (id) {
+              js.id = id;
+            }
+            js.addEventListener('load', cb);
+            document.body.appendChild(js);
+            return js;
+          }
+          function loadcss(url) {
+            var css = document.createElement('link');
+
+            css.href = url;
+            css.rel = 'stylesheet';
+            css.type = 'text/css';
+            document.head.appendChild(css);
+          }
+          function colorRange(range, color) {
+            if (range && range.elements) {
+              range.elements.forEach(function (set) {
+                set.forEach(function (item) {
+                  item.setAttribute('fill', color);
+                });
+              });
+            }
+          }
+
+          function setup() {
+            var tunes = ABCJS.renderAbc(config.paperId, abcString, config.options || {});
+            var options = config.options || {};
+            var animationColors = config.animationColors;
+
+            if (config.animation) {
+              options.animate = Object.assign({
+                target: tunes[0],
+                qpm: 120,
+                listener: function (lastRange, currentRange, context) {
+                  colorRange(lastRange, animationColors[0]);
+                  colorRange(currentRange, animationColors[1]);
+                }
+              }, options.animate || {});
+            }
+            console.log(options);
+            if (config.midi) {
+              var synth = new ABCJS.synth.CreateSynth();
+              var myContext = new AudioContext();
+              synth.init({
+                audioContext: myContext,
+                visualObj: tunes[0],
+                millisecondsPerMeasure: tunes[0].millisecondsPerMeasure(),
+                options: {
+                  soundFontUrl: "https://paulrosen.github.io/midi-js-soundfonts/abcjs/",
+                  pan: [ -0.3, 0.3 ]
+                }
+              }).then(() => {
+                // Ready to play. The results are details about what was loaded.
+                var playButton = document.createElement("button");
+                playButton.textContent = "Play";
+                document.querySelector("#abcjs-audio-73").appendChild(playButton);
+                playButton.addEventListener("click", function () {
+                  synth.prime().then(() => {
+                    synth.start();
+                  });
+                });
+              }).catch(function (reason) {
+                  console.log(reason)
+              });
+            }
+          }
+
+          if (typeof window.abcjs === 'undefined' && !document.getElementById(config.scriptId)) {
+            loadcss(config.css);
+            loadjs(config.scriptId, config.js, setup);
+          } else {
+            window.addEventListener('load', setup);
+          }
+        })();
+      </script>
+    
+
+<h4 id="七级七和弦"><a href="#七级七和弦" class="headerlink" title="七级七和弦"></a>七级七和弦</h4><p>下面两个例子分别是G大调与G小调中，七级七和弦进行到主和弦。</p>
+
+      <div id="abcjs-paper-74" class="abcjs-paper-container"></div>
+      <div id="abcjs-audio-75" class="abcjs-audio-container"></div>
+      <script>
+        (function () {
+          var config = {"js":"/js/abcjs-basic-min.js","css":"/css/abcjs-audio.css","scriptId":"hexo-tag-abcjs","midi":true,"animation":true,"animationColors":["#000000","#3d9afc"],"options":{"startingTune":0,"print":false,"visualTranspose":0,"scale":1,"responsive":"resize","inlineControls":{"loopToggle":true,"standard":true,"tooltipLoop":"Click to toggle play once/repeat.","tooltipReset":"Click to go to beginning.","tooltipPlay":"Click to play/pause.","tooltipProgress":"Click to change the playback position.","startPlaying":false}},"paperId":"abcjs-paper-74","audioId":"abcjs-audio-75"};
+          var abcString = "X:11\nK:G\nL:1\n\"_vii𝆩⁴₃ →\" [CE^FA] \"_I⁶\" [B,DGB] ||";
+
+          function loadjs(id, url, cb) {
+            var js = document.createElement('script');
+
+            js.src = url;
+            if (id) {
+              js.id = id;
+            }
+            js.addEventListener('load', cb);
+            document.body.appendChild(js);
+            return js;
+          }
+          function loadcss(url) {
+            var css = document.createElement('link');
+
+            css.href = url;
+            css.rel = 'stylesheet';
+            css.type = 'text/css';
+            document.head.appendChild(css);
+          }
+          function colorRange(range, color) {
+            if (range && range.elements) {
+              range.elements.forEach(function (set) {
+                set.forEach(function (item) {
+                  item.setAttribute('fill', color);
+                });
+              });
+            }
+          }
+
+          function setup() {
+            var tunes = ABCJS.renderAbc(config.paperId, abcString, config.options || {});
+            var options = config.options || {};
+            var animationColors = config.animationColors;
+
+            if (config.animation) {
+              options.animate = Object.assign({
+                target: tunes[0],
+                qpm: 120,
+                listener: function (lastRange, currentRange, context) {
+                  colorRange(lastRange, animationColors[0]);
+                  colorRange(currentRange, animationColors[1]);
+                }
+              }, options.animate || {});
+            }
+            console.log(options);
+            if (config.midi) {
+              var synth = new ABCJS.synth.CreateSynth();
+              var myContext = new AudioContext();
+              synth.init({
+                audioContext: myContext,
+                visualObj: tunes[0],
+                millisecondsPerMeasure: tunes[0].millisecondsPerMeasure(),
+                options: {
+                  soundFontUrl: "https://paulrosen.github.io/midi-js-soundfonts/abcjs/",
+                  pan: [ -0.3, 0.3 ]
+                }
+              }).then(() => {
+                // Ready to play. The results are details about what was loaded.
+                var playButton = document.createElement("button");
+                playButton.textContent = "Play";
+                document.querySelector("#abcjs-audio-75").appendChild(playButton);
+                playButton.addEventListener("click", function () {
+                  synth.prime().then(() => {
+                    synth.start();
+                  });
+                });
+              }).catch(function (reason) {
+                  console.log(reason)
+              });
+            }
+          }
+
+          if (typeof window.abcjs === 'undefined' && !document.getElementById(config.scriptId)) {
+            loadcss(config.css);
+            loadjs(config.scriptId, config.js, setup);
+          } else {
+            window.addEventListener('load', setup);
+          }
+        })();
+      </script>
+    
+
+
+      <div id="abcjs-paper-76" class="abcjs-paper-container"></div>
+      <div id="abcjs-audio-77" class="abcjs-audio-container"></div>
+      <script>
+        (function () {
+          var config = {"js":"/js/abcjs-basic-min.js","css":"/css/abcjs-audio.css","scriptId":"hexo-tag-abcjs","midi":true,"animation":true,"animationColors":["#000000","#3d9afc"],"options":{"startingTune":0,"print":false,"visualTranspose":0,"scale":1,"responsive":"resize","inlineControls":{"loopToggle":true,"standard":true,"tooltipLoop":"Click to toggle play once/repeat.","tooltipReset":"Click to go to beginning.","tooltipPlay":"Click to play/pause.","tooltipProgress":"Click to change the playback position.","startPlaying":false}},"paperId":"abcjs-paper-76","audioId":"abcjs-audio-77"};
+          var abcString = "X:12\nK:G\nL:1\n\"_vii°⁶₅ →\" [Ac_ef] \"_I\" [G_Bdg] ||";
+
+          function loadjs(id, url, cb) {
+            var js = document.createElement('script');
+
+            js.src = url;
+            if (id) {
+              js.id = id;
+            }
+            js.addEventListener('load', cb);
+            document.body.appendChild(js);
+            return js;
+          }
+          function loadcss(url) {
+            var css = document.createElement('link');
+
+            css.href = url;
+            css.rel = 'stylesheet';
+            css.type = 'text/css';
+            document.head.appendChild(css);
+          }
+          function colorRange(range, color) {
+            if (range && range.elements) {
+              range.elements.forEach(function (set) {
+                set.forEach(function (item) {
+                  item.setAttribute('fill', color);
+                });
+              });
+            }
+          }
+
+          function setup() {
+            var tunes = ABCJS.renderAbc(config.paperId, abcString, config.options || {});
+            var options = config.options || {};
+            var animationColors = config.animationColors;
+
+            if (config.animation) {
+              options.animate = Object.assign({
+                target: tunes[0],
+                qpm: 120,
+                listener: function (lastRange, currentRange, context) {
+                  colorRange(lastRange, animationColors[0]);
+                  colorRange(currentRange, animationColors[1]);
+                }
+              }, options.animate || {});
+            }
+            console.log(options);
+            if (config.midi) {
+              var synth = new ABCJS.synth.CreateSynth();
+              var myContext = new AudioContext();
+              synth.init({
+                audioContext: myContext,
+                visualObj: tunes[0],
+                millisecondsPerMeasure: tunes[0].millisecondsPerMeasure(),
+                options: {
+                  soundFontUrl: "https://paulrosen.github.io/midi-js-soundfonts/abcjs/",
+                  pan: [ -0.3, 0.3 ]
+                }
+              }).then(() => {
+                // Ready to play. The results are details about what was loaded.
+                var playButton = document.createElement("button");
+                playButton.textContent = "Play";
+                document.querySelector("#abcjs-audio-77").appendChild(playButton);
+                playButton.addEventListener("click", function () {
+                  synth.prime().then(() => {
+                    synth.start();
+                  });
+                });
+              }).catch(function (reason) {
+                  console.log(reason)
+              });
+            }
+          }
+
+          if (typeof window.abcjs === 'undefined' && !document.getElementById(config.scriptId)) {
+            loadcss(config.css);
+            loadjs(config.scriptId, config.js, setup);
+          } else {
+            window.addEventListener('load', setup);
+          }
+        })();
+      </script>
+    
+
+<h4 id="二级七和弦"><a href="#二级七和弦" class="headerlink" title="二级七和弦"></a>二级七和弦</h4><p>二级七和弦倾向于进行到五级和弦，不过倾向性并不那么强。下面分别是E♭大调与E♭小调中的进行。</p>
+
+      <div id="abcjs-paper-78" class="abcjs-paper-container"></div>
+      <div id="abcjs-audio-79" class="abcjs-audio-container"></div>
+      <script>
+        (function () {
+          var config = {"js":"/js/abcjs-basic-min.js","css":"/css/abcjs-audio.css","scriptId":"hexo-tag-abcjs","midi":true,"animation":true,"animationColors":["#000000","#3d9afc"],"options":{"startingTune":0,"print":false,"visualTranspose":0,"scale":1,"responsive":"resize","inlineControls":{"loopToggle":true,"standard":true,"tooltipLoop":"Click to toggle play once/repeat.","tooltipReset":"Click to go to beginning.","tooltipPlay":"Click to play/pause.","tooltipProgress":"Click to change the playback position.","startPlaying":false}},"paperId":"abcjs-paper-78","audioId":"abcjs-audio-79"};
+          var abcString = "X:13\nK:Eb\nL:1\n\"_ii⁷ →\" [FAce] \"_V⁶₄, or\" [FBd] || \"_ii⁷ →\" [FAce] \"_V⁴₃\" [FABd] ||";
+
+          function loadjs(id, url, cb) {
+            var js = document.createElement('script');
+
+            js.src = url;
+            if (id) {
+              js.id = id;
+            }
+            js.addEventListener('load', cb);
+            document.body.appendChild(js);
+            return js;
+          }
+          function loadcss(url) {
+            var css = document.createElement('link');
+
+            css.href = url;
+            css.rel = 'stylesheet';
+            css.type = 'text/css';
+            document.head.appendChild(css);
+          }
+          function colorRange(range, color) {
+            if (range && range.elements) {
+              range.elements.forEach(function (set) {
+                set.forEach(function (item) {
+                  item.setAttribute('fill', color);
+                });
+              });
+            }
+          }
+
+          function setup() {
+            var tunes = ABCJS.renderAbc(config.paperId, abcString, config.options || {});
+            var options = config.options || {};
+            var animationColors = config.animationColors;
+
+            if (config.animation) {
+              options.animate = Object.assign({
+                target: tunes[0],
+                qpm: 120,
+                listener: function (lastRange, currentRange, context) {
+                  colorRange(lastRange, animationColors[0]);
+                  colorRange(currentRange, animationColors[1]);
+                }
+              }, options.animate || {});
+            }
+            console.log(options);
+            if (config.midi) {
+              var synth = new ABCJS.synth.CreateSynth();
+              var myContext = new AudioContext();
+              synth.init({
+                audioContext: myContext,
+                visualObj: tunes[0],
+                millisecondsPerMeasure: tunes[0].millisecondsPerMeasure(),
+                options: {
+                  soundFontUrl: "https://paulrosen.github.io/midi-js-soundfonts/abcjs/",
+                  pan: [ -0.3, 0.3 ]
+                }
+              }).then(() => {
+                // Ready to play. The results are details about what was loaded.
+                var playButton = document.createElement("button");
+                playButton.textContent = "Play";
+                document.querySelector("#abcjs-audio-79").appendChild(playButton);
+                playButton.addEventListener("click", function () {
+                  synth.prime().then(() => {
+                    synth.start();
+                  });
+                });
+              }).catch(function (reason) {
+                  console.log(reason)
+              });
+            }
+          }
+
+          if (typeof window.abcjs === 'undefined' && !document.getElementById(config.scriptId)) {
+            loadcss(config.css);
+            loadjs(config.scriptId, config.js, setup);
+          } else {
+            window.addEventListener('load', setup);
+          }
+        })();
+      </script>
+    
+
+
+      <div id="abcjs-paper-80" class="abcjs-paper-container"></div>
+      <div id="abcjs-audio-81" class="abcjs-audio-container"></div>
+      <script>
+        (function () {
+          var config = {"js":"/js/abcjs-basic-min.js","css":"/css/abcjs-audio.css","scriptId":"hexo-tag-abcjs","midi":true,"animation":true,"animationColors":["#000000","#3d9afc"],"options":{"startingTune":0,"print":false,"visualTranspose":0,"scale":1,"responsive":"resize","inlineControls":{"loopToggle":true,"standard":true,"tooltipLoop":"Click to toggle play once/repeat.","tooltipReset":"Click to go to beginning.","tooltipPlay":"Click to play/pause.","tooltipProgress":"Click to change the playback position.","startPlaying":false}},"paperId":"abcjs-paper-80","audioId":"abcjs-audio-81"};
+          var abcString = "X:13\nK:Eb\nL:1\n\"_ii𝆩² →\" [EFAc] \"_V⁶, or\" [=DFB] || \"_ii𝆩² →\" [EFAc] \"_V⁶₅\" [=DFAB] ||";
+
+          function loadjs(id, url, cb) {
+            var js = document.createElement('script');
+
+            js.src = url;
+            if (id) {
+              js.id = id;
+            }
+            js.addEventListener('load', cb);
+            document.body.appendChild(js);
+            return js;
+          }
+          function loadcss(url) {
+            var css = document.createElement('link');
+
+            css.href = url;
+            css.rel = 'stylesheet';
+            css.type = 'text/css';
+            document.head.appendChild(css);
+          }
+          function colorRange(range, color) {
+            if (range && range.elements) {
+              range.elements.forEach(function (set) {
+                set.forEach(function (item) {
+                  item.setAttribute('fill', color);
+                });
+              });
+            }
+          }
+
+          function setup() {
+            var tunes = ABCJS.renderAbc(config.paperId, abcString, config.options || {});
+            var options = config.options || {};
+            var animationColors = config.animationColors;
+
+            if (config.animation) {
+              options.animate = Object.assign({
+                target: tunes[0],
+                qpm: 120,
+                listener: function (lastRange, currentRange, context) {
+                  colorRange(lastRange, animationColors[0]);
+                  colorRange(currentRange, animationColors[1]);
+                }
+              }, options.animate || {});
+            }
+            console.log(options);
+            if (config.midi) {
+              var synth = new ABCJS.synth.CreateSynth();
+              var myContext = new AudioContext();
+              synth.init({
+                audioContext: myContext,
+                visualObj: tunes[0],
+                millisecondsPerMeasure: tunes[0].millisecondsPerMeasure(),
+                options: {
+                  soundFontUrl: "https://paulrosen.github.io/midi-js-soundfonts/abcjs/",
+                  pan: [ -0.3, 0.3 ]
+                }
+              }).then(() => {
+                // Ready to play. The results are details about what was loaded.
+                var playButton = document.createElement("button");
+                playButton.textContent = "Play";
+                document.querySelector("#abcjs-audio-81").appendChild(playButton);
                 playButton.addEventListener("click", function () {
                   synth.prime().then(() => {
                     synth.start();
